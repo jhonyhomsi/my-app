@@ -20,6 +20,6 @@ result = subprocess.run(
 )
 
 if result.returncode == 0:
-    print(f"{timestamp()} {gateway} is reachable ✅")
+    print(f"{timestamp()} {gateway} is reachable")
 else:
-    print(f"{timestamp()} {gateway} is not reachable ❌")
+    print(f"{timestamp()} {gateway} is not reachable")
