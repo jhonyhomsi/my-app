@@ -1,11 +1,13 @@
-# Use Python 3.12 slim image
 FROM python:3.12-slim
 
-# Set working directory
+# Install ping
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends iputils-ping \
+ && rm -rf /var/lib/apt/lists/*
+
+# App
 WORKDIR /app
+COPY . /app
 
-# Copy Python script
-COPY ping_gateway.py .
-
-# Run script by default
-CMD ["python", "ping_gateway.py"]
+# Run your script (adjust filename if different)
+ENTRYPOINT ["python", "/app/ping_gateway.py"]
